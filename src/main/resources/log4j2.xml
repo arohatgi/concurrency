@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS Z}{America/Los_Angeles}  [%t] %logger level=%-5level %msg%n"/>
+        </Console>
+
+        <RollingFile name="rollingFile" fileName="/var/log/log4js-test.log"
+                     filePattern="/var/log/log4js-test.-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout
+                    pattern="%d{yyyy-MM-dd HH:mm:ss,SSS Z}{America/Los_Angeles}  [%t] %logger level=%-5level  %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="1200 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+
+        <Routing name="logRouter">
+            <Routes pattern="$${sys:app.console.enabled:-ON}">
+                <Route ref="console" key="ON" />
+                <Route ref="rollingFile" key="OFF" />
+            </Routes>
+        </Routing>
+    </Appenders>
+
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="logRouter"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

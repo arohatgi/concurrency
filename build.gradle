@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'Task'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.apache.logging.log4j:log4j-api:2.8.2'
+    compile 'org.apache.logging.log4j:log4j-core:2.8.2'
+    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.8.2'
+    
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+mainClassName = 'com.ar.concurrency.Task'
