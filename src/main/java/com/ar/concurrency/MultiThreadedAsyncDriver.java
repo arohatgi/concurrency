@@ -6,8 +6,8 @@ import org.apache.logging.log4j.Logger;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-public class MultiThreadedAsynDriver {
-    private static Logger          logger = LogManager.getLogger(MultiThreadedAsynDriver.class.getCanonicalName());
+public class MultiThreadedAsyncDriver {
+    private static Logger          logger = LogManager.getLogger(MultiThreadedAsyncDriver.class.getCanonicalName());
     private        MultiThreadedAsyncCalculator asyncCalculator;
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {

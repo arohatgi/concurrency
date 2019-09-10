@@ -22,8 +22,8 @@ public class AsyncCalculator {
     public static void main(String[] args) throws InterruptedException, ExecutionException, TimeoutException {
         AsyncCalculator asyncCalc = new AsyncCalculator("async");
         Future<Integer> future    = asyncCalc.square(10);
-//        Integer         result    = checkLoop(future);
-        Integer result = future.get(500, TimeUnit.MILLISECONDS);
+        Integer         result    = checkLoop(future);
+//        Integer result = future.get(500, TimeUnit.MILLISECONDS);
         logger.info(String.format("result : %d", result));
         asyncCalc.shutdown();
     }
