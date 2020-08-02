@@ -3,19 +3,19 @@ package com.ar.concurrency.Tasks;
 import java.util.concurrent.RecursiveTask;
 
 public class FactorialCalc extends RecursiveTask<Integer> {
-    private Integer n;
+    private Integer num;
 
     public FactorialCalc(Integer n) {
-        this.n = n;
+        this.n = num;
     }
 
     @Override
     protected Integer compute() {
-        if (n <= 1) {
-            return n;
+        if (num <= 1) {
+            return num;
         }
         FactorialCalc calculator = new FactorialCalc(n - 1);
         calculator.fork();
-        return n * n + calculator.join();
+        return num * num + calculator.join();
     }
 }
